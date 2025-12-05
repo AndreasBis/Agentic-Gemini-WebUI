@@ -1,0 +1,8 @@
+ag2[gemini]
+nbformat
+pypdf
+python-docx
+flask
+flask-socketio
+eventlet
+flask-sqlalchemy

@@ -1,0 +1,8 @@
+# Hosts virtual environment directory
+venv/
+
+# Includes API key
+config.json
+
+# Includes path to API key
+config_path.json

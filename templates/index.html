@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Gemini Web UI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <div class="layout-wrapper">
+        <aside id="history-sidebar">
+            <div class="sidebar-header">
+                <h3>Chat History</h3>
+            </div>
+            <div id="history-list">
+                </div>
+        </aside>
+
+        <div class="main-content">
+            <header>
+                <div class="header-left">
+                    <button id="sidebar-toggle" onclick="toggleSidebar()">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <h1>Agentic Gemini</h1>
+                </div>
+                <div class="header-controls">
+                    <span id="status-indicator" class="status offline">Offline</span>
+                    <button id="back-btn" class="nav-btn hidden" onclick="showMenu()">Back to Menu</button>
+                </div>
+            </header>
+
+            <main>
+                <div id="menu-overlay" class="active">
+                    <div class="menu-card">
+                        <h2>Select Agent Mode</h2>
+                        <div class="button-grid">
+                            <button onclick="selectMode('1')">1. Basic Code Agent</button>
+                            <button onclick="selectMode('2')">2. Coder vs Reviewer</button>
+                            <button onclick="selectMode('3')">3. Orchestrated Chat</button>
+                            <button onclick="selectMode('4')">4. Human-in-the-Loop</button>
+                            <button onclick="selectMode('5')">5. Tool Use Chat</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="terminal-window">
+                    <div id="output-area"></div>
+                    
+                    <div id="input-container" class="hidden">
+                        <div id="input-bar">
+                            <input type="text" id="user-input" autocomplete="off" placeholder="Type here ...">
+                            <button id="send-btn" onclick="sendInput()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
